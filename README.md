@@ -64,7 +64,7 @@ You just need ``python``, ``python-dev``, ``virtualenvwrapper``, ``pip``  and ``
   ```
     cd sentech
     pip install -r requirement.txt
-    cp yaay/settings_local.py.samples yaay/settings_local.py
+    cp sentech/settings_local.py.samples sentech/settings_local.py
       ** Pour le moment pas besoin de faire des modifications sur settings_local.py
     touch db/db.sqlite3
     python manage.py syncdb --all
