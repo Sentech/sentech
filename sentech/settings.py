@@ -36,8 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd-party required apps:
     'south',
     'registration',
+    'pagination',
+    'tagging',
+    'pinax_theme_bootstrap',
+    'planet',    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 TEMPLATE_DIRS = (
@@ -56,10 +62,34 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "templates"),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'planet.context_processors.context',
+)
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    # some other template loaders here...
+)
+
 ROOT_URLCONF = 'sentech.urls'
 
 WSGI_APPLICATION = 'sentech.wsgi.application'
 
+# Site id: required by django-planet
+SITE_ID = 1
+
+PLANET = {
+    "USER_AGENT": "Sentech Planet Aggregator/1.0",
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

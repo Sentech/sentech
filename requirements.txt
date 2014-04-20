@@ -1,2 +1,7 @@
 Django==1.6.2
 South
+django-tagging
+django-pagination
+feedparser
+pinax-theme-bootstrap==3.0a4
+beautifulsoup4
