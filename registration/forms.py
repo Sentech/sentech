@@ -89,7 +89,15 @@ class LoginForm(forms.Form):
 		return data
 
 
-	username = forms.CharField()
+	username = forms.CharField(
+		label= _('User name'),
+    widget=forms.TextInput(),
+    required='True',
+    error_messages={'required':_("Username is required")})
 
 
-	password = forms.CharField()
+	password = forms.CharField(
+		label= _('Password'),
+    widget=forms.PasswordInput(),
+    required='True',
+    error_messages={'required':_('Password is required')})
