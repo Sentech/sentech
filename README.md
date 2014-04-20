@@ -1,6 +1,6 @@
 ## Sentech
 
-Projet sentech
+Project sentech
 
 To breathe new life into the Senegalese tech community (RIP DakarLUG),
 we're building the sentech.cc website in the open, based on Django.
@@ -22,39 +22,42 @@ You just need ``python``, ``python-dev``, ``virtualenvwrapper``, ``pip``  and ``
 
 ### Installation
 
-#### Environnement
+#### Environment
 
  * Install virtualenvwrapper
- ** sudo apt-get install python-pip (source ubuntu/debian)
- ** sudo pip install virtualenvwrapper
+
+  ``` 
+    $ sudo apt-get install python-pip (source ubuntu/debian)
+    $ sudo pip install virtualenvwrapper
+  ```
 
  * Configure virtualenvwrapper
  ** add to your bash profile
 
   ```
-    export WORKON_HOME=~/.virtualenvs
-    mkdir -p $WORKON_HOME
-    source /usr/local/bin/virtualenvwrapper.sh
+    $ export WORKON_HOME=~/.virtualenvs
+    $ mkdir -p $WORKON_HOME
+    $ source /usr/local/bin/virtualenvwrapper.sh
 
   ```
 
-  ** Load your bash variable
+ * Reload your bash variables
 
   ```
-    source ~/.bashrc
-
+    $ source ~/.bashrc
   ```
 
 
-#### Sentech plateform
+#### Sentech platform
 
   * clone https://github.com/Sentech/sentech on your workspace projet
 
   * Activate your virtualenv
 
   ```
-    mkvirtualenv <your-env-name>
-    source ~/.virtualenvs/<your-env-name>
+    $ mkvirtualenv <your-env-name>
+    $ source ~/.virtualenvs/<your-env-name>
+    
     your prompt must begin with `` (your-env-name) ``
 
   ```
@@ -62,16 +65,18 @@ You just need ``python``, ``python-dev``, ``virtualenvwrapper``, ``pip``  and ``
   * Install project requirements
 
   ```
-    cd sentech
-    pip install -r requirement.txt
-    cp sentech/settings_local.py.sample sentech/settings_local.py
+    $ cd sentech
+    $ pip install -r requirement.txt
+    $ cp sentech/settings_local.py.sample sentech/settings_local.py
+   
       ** Pour le moment pas besoin de faire des modifications sur settings_local.py
-    mkdir db
-    touch db/db.sqlite3
-    python manage.py syncdb --all
+   
+    $ mkdir db
+    $ touch db/db.sqlite3
+    $ python manage.py syncdb --all
 
-    python manage.py migrate si erreur
-    python manage.py migrate --fake
+    $ python manage.py migrate #si erreur
+    $ python manage.py migrate --fake
 
   ```
 
