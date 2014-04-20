@@ -1,7 +1,14 @@
 from settings import *
-# Personnal settings for sentech project.
 
-# Database
+# Copy this file to settings_local.py
+#
+# This file should only contain settings relative to your local environment.
+# (It is ignored by Git because it should not become part of the repo.)
+#
+# If you need to store sensitive things like passwords, API keys, 
+# salting hashes, ... this is the place.
+
+# Database info:
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
