@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block pagetitle %}
+    Login Form
+{% endblock%}
+
+{% block content %}
+<div id="wrapper" class="container_15">
+
+    <div class="message grid_15">
+        {% if messages %}
+            {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="title grid_15">
+        <h2> Connectez - vous avec votre compte </h2>
+    </div>
+
+    <div class="form grid_15">
+        <div class="form-login">
+            <form action="{{ action }}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <input id="login-username" class="input-xlarge" type="text" name="username" value="{{login.username.value}}" placeholder="Nom d'utilisateur"/><br/>
+                <p class="small error">{{ login.username.errors }}</p>
+                <input id="login-password"  class="input-xlarge" type="password" name="password" value="" placeholder="Mot de passe"/>
+                <p class="small error">{{ login.password.errors }}</p>
+                <div clas="">
+                    <span> <a href="#"> Mot de passe oublié ? </a> </span>
+                    <span>
+                        <input type="submit" class="" value="Go!" />
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+    <title>
+      {% block pagetitle %} Sentech | {% endblock%}
+    </title>
+  </head>
+
+  <body>
+    <!-- container -->
+    <div class="container">
+      <!-- Header -->
+      <header class="row">
+        <div class="span12 columns">
+          HEADER
+        </div>
+      </header>
+
+      <!-- Page Content -->
+
+      {% block content %} {% endblock %}
+
+    </div> <!-- End of container -->
+  </body>
+
+</html>
