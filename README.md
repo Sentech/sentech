@@ -59,35 +59,43 @@ You just need ``python``, ``python-dev``, ``virtualenvwrapper``, ``pip``  and ``
     (sentech) $ 
   ```
 
-  * Install project requirements
+  * Set up the django project
 
   ```
+    # Head into the overall sentech virtualenv directory
     (sentech) $ cd sentech
-    # you're now inside the overall sentech virtualenv directory
     
-    # install the dependencies
+    # Install the dependencies
     (sentech) $ pip install -r requirement.txt
     
-    # clone the sentech project from github
+    # Clone the sentech project from github
     (sentech) $ git clone https://github.com/Sentech/sentech
     
-    # go into your cloned sentech project
+    # Go into your cloned sentech project
     (sentech) $ cd sentech
     
-    # set up a local settings file that won't be committed to the repo
+    # Set up a local settings file that won't be committed to the repo
     (sentech) $ cp settings_local.py.sample settings_local.py
-   
-    # set up a sqlite3 db
+
+    (sentech) $ cd ..
+    
+    # Make manage.py executable so we can more easily call it
+    (sentech) $ chmod +x manage.py
+    
+    # Set up a sqlite3 db
     (sentech) $ mkdir db
     (sentech) $ touch db/db.sqlite3
-    (sentech) $ python manage.py syncdb --all
+    (sentech) $ ./manage.py syncdb --all
 
-    # in case you got an error setting up the db:
+    # In case you got an error setting up the db:
     (sentech) $ python manage.py migrate
     (sentech) $ python manage.py migrate --fake
-
   ```
 
+  * Run your local webserver
+  ```
+
+  ```
 ### Configure your local site
 
 
