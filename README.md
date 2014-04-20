@@ -50,33 +50,41 @@ You just need ``python``, ``python-dev``, ``virtualenvwrapper``, ``pip``  and ``
 
 #### Sentech platform
 
-  * clone https://github.com/Sentech/sentech on your workspace projet
-
-  * Activate your virtualenv
+  * Activate your virtualenv (for instance, name it sentech)
 
   ```
-    $ mkvirtualenv <your-env-name>
-    $ source ~/.virtualenvs/<your-env-name>
+    $ mkvirtualenv sentech
     
-    your prompt must begin with `` (your-env-name) ``
-
+    # your prompt now indicates the active virtual env  `` (sentech) ``
+    (sentech) $ 
   ```
 
   * Install project requirements
 
   ```
-    $ cd sentech
-    $ pip install -r requirement.txt
-    $ cp sentech/settings_local.py.sample sentech/settings_local.py
+    (sentech) $ cd sentech
+    # you're now inside the overall sentech virtualenv directory
+    
+    # install the dependencies
+    (sentech) $ pip install -r requirement.txt
+    
+    # clone the sentech project from github
+    (sentech) $ git clone https://github.com/Sentech/sentech
+    
+    # go into your cloned sentech project
+    (sentech) $ cd sentech
+    
+    # set up a local settings file that won't be committed to the repo
+    (sentech) $ cp settings_local.py.sample settings_local.py
    
-      ** Pour le moment pas besoin de faire des modifications sur settings_local.py
-   
-    $ mkdir db
-    $ touch db/db.sqlite3
-    $ python manage.py syncdb --all
+    # set up a sqlite3 db
+    (sentech) $ mkdir db
+    (sentech) $ touch db/db.sqlite3
+    (sentech) $ python manage.py syncdb --all
 
-    $ python manage.py migrate #si erreur
-    $ python manage.py migrate --fake
+    # in case you got an error setting up the db:
+    (sentech) $ python manage.py migrate
+    (sentech) $ python manage.py migrate --fake
 
   ```
 
