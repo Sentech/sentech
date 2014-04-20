@@ -88,14 +88,17 @@ You just need ``python``, ``python-dev``, ``virtualenvwrapper``, ``pip``  and ``
     (sentech) $ ./manage.py syncdb --all
 
     # In case you got an error setting up the db:
-    (sentech) $ python manage.py migrate
-    (sentech) $ python manage.py migrate --fake
+    (sentech) $ ./manage.py migrate
+    (sentech) $ ./manage.py migrate --fake
   ```
 
   * Run your local webserver
   ```
-
+  (sentech) $ ./manage.py runserver
   ```
+
+You can now visit the project in your browser at http://localhost:8000
+
 ### Configure your local site
 
 
