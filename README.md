@@ -10,9 +10,11 @@ so join us!
 
 ### Features
 
-  * blog/news.
-  * community events.
-  * forum.
+  * blog/news
+  * community events
+  * forum / discussions (tied in with mailing list?)
+  * plane-style tech blog aggregation
+  * sign in with github / bitbucket (oauth)
 
 
 ### Requirements
@@ -99,15 +101,5 @@ You just need ``python``, ``python-dev``, ``virtualenvwrapper``, ``pip``  and ``
 
 You can now visit the project in your browser at http://localhost:8000
 
-### Configure your local site
 
-
-#### Apache
-
-TBD
-
-
-#### Nginx
-
-TBD
 
