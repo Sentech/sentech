@@ -54,3 +54,55 @@ def userLogin(request):
     return HttpResponseRedirect(redirect)
 
   return render_to_response('login.html', {'login': userlogin} ,context_instance=RequestContext(request))
+
+def userRegister(request):
+  redirect = ''
+  redirect = next(request)
+
+  if not request.user.is_authenticated():
+    if request.method == 'POST':
+      data = request.POST.copy()
+      data['date_joined'] = datetime.today()
+      data['last_login'] = datetime.now()
+      userregister = RegisterForm(data)
+
+      if userregister.is_valid():
+        username = userregister.cleaned_data['username']
+        email = userregister.cleaned_data['email']
+        password = userregister.cleaned_data['password']
+        user = User.objects.create_user(username, email, password)
+        user_profile = UserProfile(user=user)
+        user_profile.save()
+        registed = authenticate(username=username, password=password)
+        login(request, registed)
+        return HttpResponseRedirect(redirect)
+      else :
+        messages.error(request, _('There\'re errors in the form! Thank you to correct before continuing'))
+    else :
+      userregister = RegisterForm()
+  else :
+    messages.warning(request, _('You\'re already connected'))
+    return HttpResponseRedirect(redirect)
+
+  return render_to_response('register.html', {'register': userregister} ,context_instance=RequestContext(request))
+
+
+def profile(request, username=None):
+
+  if request.user.is_authenticated():
+    if username :
+      user = get_object_or_404(User, username__iexact=username)
+    else :
+      user = request.user
+
+    try :
+      user.userprofile
+    except ObjectDoesNotExist :
+      user_profile = UserProfile(user=user)
+      user_profile.save()
+  else :
+    messages.warning(request, 'Connectez vous pour voir les profils utilisateurs')
+    return HttpResponseRedirect('/login')
+
+  return render_to_response('auth/profile.html',{'pageuser': user, 'user_profile': user.userprofile}, context_instance=RequestContext(request))
+

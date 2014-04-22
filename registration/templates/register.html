@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="title">
+        <h2>  Inscrivez - vous à yaay </h2>
+    </div>
+
+    <div class="form">
+        <div class="grid_7 omega">
+            <div class="prefix_1 grid_4 suffix_2">
+                <div class="form-register">
+                    <form action="{{ action }}" method="post">
+                        {% csrf_token %}
+                        <p class="">
+                            <input id="register-username" class="input-xlarge" type="text" name="username" value="{% if register.username.value %} {{register.username.value}} {% endif %}" placeholder="Nom d'utilisateur"/>
+                            <small>{{ register.username.errors }}</small>
+                        </p>
+
+                        <p class="">
+                            <input id="register-email" class="input-xlarge"  type="email" name="email" value="{% if register.email.value %} {{register.email.value}} {% endif %}" placeholder="E-mail"/>
+                            <small>{{ register.email.errors }}</small>
+                        </p>
+
+                        <p class="">
+                            <input id="register-password" class="input-xlarge"  type="password" name="password" value="" placeholder="Mot de passe"/>
+                            <small>{{ register.password.errors }}</small>
+                        </p>
+
+                        <p class="">
+                           <input id="register-password_verified" class="input-xlarge"  type="password" name="password_verified" value="" placeholder="Retapez votre mot de passe"/>
+                            <small>{{ register.password_verified.errors }}</small>
+                        </p>
+
+                        <p class="">
+                            <button type="submit" class="">  Créer votre compte </button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

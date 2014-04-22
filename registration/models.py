@@ -1,6 +1,7 @@
 from django.db import models
 #from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from allauth.account.models import EmailAddress
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
@@ -74,8 +75,17 @@ class UserProfile(models.Model):
 	null=True,
 	blank=True)
 
+	def account_verified(self):
+		if self.user.is_authenticated:
+			result = EmailAddress.objects.filter(email=self.user.email)
+			if len(result):
+				return result[0].verified
+		return False
+
 	def __unicode__(self):
-		return '%s' % self.user.username
+		return "{}'s profile".format(self.user.username)
+
+
 
 
 
