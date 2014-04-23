@@ -11,12 +11,15 @@ urlpatterns = patterns('',
     #url(r'^$', 'sentech.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', HomePageView.as_view(), name='home'),
-
+    #admin page
     url(r'^admin/', include(admin.site.urls)),
 
-    #url(r'^user/', include('registration.urls', namespace='registration')),
+    # homepage
+    url(r'^$', HomePageView.as_view(), name='home'),
 
+    #accounts
     url(r'^accounts/', include('allauth.urls')),
 
+    #planets
+    url(r'^planet/', include('planet.urls')),
 )

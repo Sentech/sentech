@@ -32,6 +32,7 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = (
+    #django default app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
     # contrib app
     'allauth',
     'allauth.account',
@@ -46,11 +48,14 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.bitbucket',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.twitter',
+    'pagination',
+    'tagging',
+    'pinax_theme_bootstrap',
+    'planet',
     'south',
 
     # custom app
     'registration',
-
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 TEMPLATE_DIRS = (
@@ -70,12 +76,22 @@ TEMPLATE_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.request",
+    # django processors
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
 
     # allauth specific context processors
     "allauth.account.context_processors.account",
     "allauth.socialaccount.context_processors.socialaccount",
+
+    # planet processors
+    'planet.context_processors.context',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -89,10 +105,21 @@ LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    # some other template loaders here...
+)
 ROOT_URLCONF = 'sentech.urls'
 
 WSGI_APPLICATION = 'sentech.wsgi.application'
 
+# Site id: required by django-planet
+SITE_ID = 1
+
+PLANET = {
+    "USER_AGENT": "Sentech Planet Aggregator/1.0",
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
